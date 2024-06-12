@@ -38,10 +38,10 @@ main: $(OBJ)
 
 ./build/random_pattern_test.o: ./test/random_pattern_test.cpp ./src/bwtree.h
 	$(CXX) ./test/random_pattern_test.cpp -c -o ./build/random_pattern_test.o $(CXX_FLAG) $(OPT_FLAG) $(GMON_FLAG)
-	
+
 ./build/basic_test.o: ./test/basic_test.cpp ./src/bwtree.h
 	$(CXX) ./test/basic_test.cpp -c -o ./build/basic_test.o $(CXX_FLAG) $(OPT_FLAG) $(GMON_FLAG)
-	
+
 ./build/mixed_test.o: ./test/mixed_test.cpp ./src/bwtree.h
 	$(CXX) ./test/mixed_test.cpp -c -o ./build/mixed_test.o $(CXX_FLAG) $(OPT_FLAG) $(GMON_FLAG)
 
@@ -56,10 +56,10 @@ main: $(OBJ)
 
 ./build/benchmark_art_full.o:
 	$(CXX) ./test/benchmark_art_full.cpp -c -o ./build/benchmark_art_full.o $(CXX_FLAG) $(OPT_FLAG) $(GMON_FLAG)
-	
+
 ./build/stress_test.o: ./test/stress_test.cpp ./src/bwtree.h
 	$(CXX) ./test/stress_test.cpp -c -o ./build/stress_test.o $(CXX_FLAG) $(OPT_FLAG) $(GMON_FLAG)
-	
+
 ./build/iterator_test.o: ./test/iterator_test.cpp ./src/bwtree.h
 	$(CXX) ./test/iterator_test.cpp -c -o ./build/iterator_test.o $(CXX_FLAG) $(OPT_FLAG) $(GMON_FLAG)
 
@@ -82,7 +82,7 @@ small-size:
 	make clean
 	make OPT_FLAG=" -Os -DNDEBUG -DBWTREE_NODEBUG"
 
-benchmark-all: main 
+benchmark-all: main
 	$(PRELOAD_LIB) ./main --benchmark-all
 
 benchmark-bwtree: main
@@ -105,7 +105,7 @@ stress-test: main
 
 epoch-test: main
 	$(PRELOAD_LIB) ./main --epoch-test
-	
+
 infinite-insert-test: main
 	$(PRELOAD_LIB) ./main --infinite-insert-test
 
@@ -123,4 +123,4 @@ clean:
 	rm -f ./build/*
 	rm -f *.log
 	rm -f ./main
-	
+
