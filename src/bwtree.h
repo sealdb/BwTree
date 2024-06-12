@@ -29,6 +29,7 @@
 #include <array>
 #include <atomic>
 #include <cassert>
+#include <cstdio>
 #include <chrono>
 #include <thread>
 #include <unordered_set>
@@ -191,6 +192,7 @@ extern bool print_flag;
  * class BwTreeBase - Base class of BwTree that stores some common members
  */
 class BwTreeBase {
+ public:
   // This is the presumed size of cache line
   static constexpr size_t CACHE_LINE_SIZE = 64;
   
@@ -305,13 +307,13 @@ class BwTreeBase {
                 "class PaddedGCMetadata size does"
                 " not conform to the alignment!");
  
- private: 
   // This is used as the garbage collection ID, and is maintained in a per
   // thread level
   // This is initialized to -1 in order to distinguish between registered 
   // threads and unregistered threads
   static thread_local int gc_id;
   
+ private:
   // This is used to count the number of threads participating GC process
   // We use this number to initialize GC data structure
   static std::atomic<size_t> total_thread_num;
